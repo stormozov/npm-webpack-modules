@@ -1,12 +1,12 @@
-import Character from "../domain/domain";
+import Character from '../domain/domain';
 
-class Game {
+export default class Game {
   start() {
     console.log(`[Class ${Game.name}]`, 'game started', new Character());
   }
 }
 
-class GameSavingData {
+export class GameSavingData {
   #gameSavingData = '"game saving data"';
 
   get gameSavingData() {
@@ -18,13 +18,14 @@ class GameSavingData {
   }
 }
 
-function readGameSaving() {
-  console.log(`[Function ${readGameSaving.name}]`, 'loaded game saving data', new GameSavingData().gameSavingData);
+export function readGameSaving() {
+  console.log(
+    `[Function ${readGameSaving.name}]`, 
+    'loaded game saving data', 
+    new GameSavingData().gameSavingData
+  );
 }
 
-function writeGameSaving() {
+export function writeGameSaving() {
   console.log(`[Function ${writeGameSaving.name}]`, 'saved game');
 }
-
-export default Game;
-export { GameSavingData, readGameSaving, writeGameSaving };

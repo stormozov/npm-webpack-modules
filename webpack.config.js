@@ -3,14 +3,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 const glob = require('glob');
-const { emitWarning } = require('process');
 
 const htmlFiles = glob.sync('./src/*.html');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'assets/js/[name].js',
+    filename: 'scripts/[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -21,12 +20,6 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
-          },
-          {
-            loader: 'eslint-loader',
-            options: {
-              emitWarning: true
-            }
           }
         ]
       },
@@ -42,7 +35,7 @@ module.exports = {
       filename: path.basename(file),
     })),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/styles.css',
+      filename: 'styles/styles.css',
     }),
     new CleanWebpackPlugin(),
   ],
